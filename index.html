@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#FCECEF" />
+
+    <!-- Open Graph metadata for WhatsApp and social previews -->
+    <meta
+      property="og:title"
+      content="28 October — A Little World Made Just for You"
+    />
+    <meta
+      property="og:description"
+      content="A personal birthday surprise for Anjali, made with love by Ranjan."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://placehold.co/1200x630/591C2B/FFFDF9?text=28+October+%E2%99%A1+For+Anjali"
+    />
+
+    <title>28 October — A Little World Made Just for You</title>
+
+    <!-- Typography: Playfair Display for romantic serif headings, Inter for clean UI, Caveat for handwritten letter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/themes/odometer-theme-minimal.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Floating Particle & Twinkle Canvas -->
+    <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+
+    <!-- Optional Background Music Player Bar -->
+    <div
+      id="music-player-wrap"
+      class="music-bar"
+      style="display: none"
+      role="button"
+      tabindex="0"
+      aria-label="Toggle background music"
+    >
+      <div class="music-icon" id="music-icon">🎵</div>
+      <span id="music-status-text">Play music</span>
+    </div>
+
+    <div class="content-wrapper">
+      <!-- ======================================================================
+         SECTION 1: LANDING SCREEN
+         ====================================================================== -->
+      <header class="hero-section" id="landing">
+        <p class="hero-tag">
+          To my favourite person, <span id="hero-name-target">Anjali</span>
+        </p>
+        <h1 class="hero-date-badge">28 October</h1>
+        <p class="hero-subtitle">
+          Somewhere between all our conversations, memories, and dreams, you
+          became someone very special to me.
+        </p>
+
+        <button class="btn btn-primary hero-cta" id="btn-open-surprise">
+          <span>Open your birthday surprise</span>
+          <span aria-hidden="true">❤️</span>
+        </button>
+
+        <p class="hero-signature">
+          <span>Made with love by</span>
+          <strong id="hero-hisname-target">Ranjan</strong>
+        </p>
+
+        <div class="scroll-arrow" aria-hidden="true">
+          <span>↓</span>
+        </div>
+      </header>
+
+      <!-- ======================================================================
+         SECTION 2: LIVE AGE CALCULATOR ("Your Story So Far")
+         ====================================================================== -->
+      <section
+        class="section-padding"
+        id="age-story"
+        aria-labelledby="age-heading"
+      >
+        <div class="container">
+          <div class="section-header">
+            <span class="section-eyebrow">Milestone</span>
+            <h2 class="section-title" id="age-heading">Your Story So Far</h2>
+            <p class="section-desc">
+              Every single second in this world has made you the wonderful
+              person you are today.
+            </p>
+          </div>
+
+          <div class="glass-card">
+            <!-- Banner for 28 Oct 2026 -->
+            <div
+              id="birthday-banner-22"
+              class="birthday-highlight-badge"
+              role="status"
+            >
+              ✨ You just turned 22 today! Happy Birthday! ✨
+            </div>
+
+            <p class="age-lead">Today, you have been in this world for…</p>
+
+            <!-- Primary Calendar-Accurate Grid -->
+            <div class="time-grid-primary" role="timer" aria-live="polite">
+              <div class="time-tile">
+                <span class="tile-num" id="age-years">0</span>
+                <span class="tile-label">Years</span>
+              </div>
+              <div class="time-tile">
+                <span class="tile-num" id="age-months">0</span>
+                <span class="tile-label">Months</span>
+              </div>
+              <div class="time-tile">
+                <span class="tile-num" id="age-days">0</span>
+                <span class="tile-label">Days</span>
+              </div>
+              <div class="time-tile">
+                <span class="tile-num" id="age-hours">0</span>
+                <span class="tile-label">Hours</span>
+              </div>
+              <div class="time-tile">
+                <span class="tile-num" id="age-mins">0</span>
+                <span class="tile-label">Minutes</span>
+              </div>
+              <div class="time-tile">
+                <span class="tile-num" id="age-secs">0</span>
+                <span class="tile-label">Seconds</span>
+              </div>
+            </div>
+
+            <!-- Secondary Cumulative Totals Strip -->
+            <div class="totals-box">
+              <p class="totals-title">
+                A few more ways to measure your journey
+              </p>
+              <div class="totals-grid">
+                <div class="total-stat">
+                  <span class="total-num" id="total-weeks">0</span>
+                  <span class="total-sub"
+                    >Total Weeks (+ <span id="rem-days">0</span>d)</span
+                  >
+                </div>
+                <div class="total-stat">
+                  <span class="total-num" id="total-days">0</span>
+                  <span class="total-sub">Total Days</span>
+                </div>
+                <div class="total-stat">
+                  <span class="total-num" id="total-hours">0</span>
+                  <span class="total-sub">Total Hours</span>
+                </div>
+                <div class="total-stat">
+                  <span class="total-num" id="total-minutes">0</span>
+                  <span class="total-sub">Total Minutes</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="age-footer-copy">
+              …and I'm really glad every one of those moments led to you.
+            </p>
+            <p
+              class="birth-origin-note text-center"
+              id="birth-origin-label"
+              style="text-align: center"
+            >
+              Born on 28 October 2004
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+         SECTION 3: BIRTHDAY COUNTDOWN & CELEBRATION
+         ====================================================================== -->
+      <section
+        class="section-padding"
+        id="countdown-section"
+        aria-labelledby="countdown-heading"
+      >
+        <div class="container">
+          <div class="section-header">
+            <span class="section-eyebrow">Celebration</span>
+            <h2 class="section-title" id="countdown-heading">The Big Day</h2>
+            <p class="section-desc" id="countdown-desc">
+              Anticipating every quiet smile and joyful wish.
+            </p>
+          </div>
+
+          <div class="glass-card celebration-box">
+            <!-- State 1: Countdown Before 28 Oct 2026 -->
+            <div id="countdown-timer-view" class="countdown-timer-wrap">
+              <p
+                class="serif-font"
+                style="
+                  font-size: 1.25rem;
+                  margin-bottom: 1rem;
+                  color: var(--deep-rose);
+                "
+              >
+                Counting down to 28 October 2026:
+              </p>
+              <div
+                class="time-grid-primary"
+                style="
+                  grid-template-columns: repeat(4, 1fr);
+                  max-width: 520px;
+                  margin: 0 auto;
+                "
+              >
+                <div class="time-tile">
+                  <span class="tile-num" id="cd-days">0</span>
+                  <span class="tile-label">Days</span>
+                </div>
+                <div class="time-tile">
+                  <span class="tile-num" id="cd-hours">0</span>
+                  <span class="tile-label">Hours</span>
+                </div>
+                <div class="time-tile">
+                  <span class="tile-num" id="cd-mins">0</span>
+                  <span class="tile-label">Mins</span>
+                </div>
+                <div class="time-tile">
+                  <span class="tile-num" id="cd-secs">0</span>
+                  <span class="tile-label">Secs</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- State 2: Active Birthday Celebration with Cake & Candles -->
+            <div id="cake-celebration-view" style="display: none">
+              <p
+                class="serif-font"
+                style="
+                  font-size: 1.6rem;
+                  color: var(--deep-burgundy);
+                  margin-bottom: 0.5rem;
+                "
+              >
+                It's your day, <span class="her-name-span">Anjali</span>! 🎉
+              </p>
+              <p
+                style="
+                  color: var(--text-muted);
+                  margin-bottom: 1.5rem;
+                  font-size: 0.98rem;
+                "
+              >
+                Make a quiet wish in your heart, then blow out your candles.
+              </p>
+
+              <div
+                class="cake-container"
+                id="cake-element"
+                aria-label="Birthday Cake"
+              >
+                <svg
+                  class="cake-svg"
+                  viewBox="0 0 200 170"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <!-- Plate -->
+                  <ellipse cx="100" cy="155" rx="85" ry="12" fill="#E8D5DA" />
+                  <ellipse cx="100" cy="152" rx="78" ry="10" fill="#FFFFFF" />
+
+                  <!-- Bottom Cake Layer -->
+                  <rect
+                    x="35"
+                    y="105"
+                    width="130"
+                    height="42"
+                    rx="8"
+                    fill="#FCECEF"
+                  />
+                  <path
+                    d="M35 120 C 55 128, 75 115, 100 125 C 125 115, 145 128, 165 120 L 165 105 L 35 105 Z"
+                    fill="#E5A9B4"
+                  />
+
+                  <!-- Top Cake Layer -->
+                  <rect
+                    x="55"
+                    y="70"
+                    width="90"
+                    height="38"
+                    rx="6"
+                    fill="#FFF4F6"
+                  />
+                  <path
+                    d="M55 82 C 70 88, 85 78, 100 86 C 115 78, 130 88, 145 82 L 145 70 L 55 70 Z"
+                    fill="#E5A9B4"
+                  />
+
+                  <!-- Candles -->
+                  <!-- Candle 1 -->
+                  <rect
+                    x="80"
+                    y="44"
+                    width="7"
+                    height="26"
+                    rx="2"
+                    fill="#D4AF37"
+                  />
+                  <path
+                    d="M83.5 35 C 79 38, 79 43, 83.5 44 C 88 43, 88 38, 83.5 35 Z"
+                    fill="#FF9E43"
+                    class="flame"
+                    id="flame-1"
+                  />
+                  <ellipse
+                    cx="83.5"
+                    cy="40"
+                    rx="2"
+                    ry="3"
+                    fill="#FFF275"
+                    class="flame"
+                  />
+                  <!-- Candle 2 -->
+                  <rect
+                    x="113"
+                    y="44"
+                    width="7"
+                    height="26"
+                    rx="2"
+                    fill="#D4AF37"
+                  />
+                  <path
+                    d="M116.5 35 C 112 38, 112 43, 116.5 44 C 121 43, 121 38, 116.5 35 Z"
+                    fill="#FF9E43"
+                    class="flame"
+                    id="flame-2"
+                  />
+                  <ellipse
+                    cx="116.5"
+                    cy="40"
+                    rx="2"
+                    ry="3"
+                    fill="#FFF275"
+                    class="flame"
+                  />
+
+                  <!-- Smoke trails after blow -->
+                  <path
+                    d="M83.5 40 Q 80 25 86 15"
+                    stroke="#B0A0A5"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    fill="none"
+                    class="flame-smoke"
+                  />
+                  <path
+                    d="M116.5 40 Q 112 25 120 15"
+                    stroke="#B0A0A5"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    fill="none"
+                    class="flame-smoke"
+                  />
+                </svg>
+              </div>
+
+              <p class="wish-message" id="wish-status-text">
+                Your birthday wishes are waiting ✨
+              </p>
+
+              <button class="btn btn-primary" id="btn-blow-candles">
+                <span>Blow out the candles</span>
+                <span aria-hidden="true">💨</span>
+              </button>
+            </div>
+
+            <!-- State 3: Past Birthday View -->
+            <div id="past-birthday-view" style="display: none">
+              <p
+                class="serif-font"
+                style="
+                  font-size: 1.45rem;
+                  color: var(--deep-burgundy);
+                  margin-bottom: 0.6rem;
+                "
+              >
+                Hope your birthday was beautiful,
+                <span class="her-name-span">Anjali</span>.
+              </p>
+              <p
+                style="
+                  color: var(--text-muted);
+                  max-width: 480px;
+                  margin: 0 auto 1.5rem;
+                "
+              >
+                The date has passed on the calendar, but every warm wish and
+                happy thought remains just as true.
+              </p>
+              <button
+                class="btn btn-secondary btn-pill-sm"
+                id="btn-replay-candles"
+              >
+                Relight the candles 🎂
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+         SECTION 4: BIRTHDAY LETTER (INTERACTIVE ENVELOPE)
+         ====================================================================== -->
+      <section
+        class="section-padding"
+        id="letter-section"
+        aria-labelledby="letter-heading"
+      >
+        <div class="container">
+          <div class="section-header">
+            <span class="section-eyebrow">From the heart</span>
+            <h2 class="section-title" id="letter-heading">
+              A Letter from Ranjan to Anjali
+            </h2>
+            <p class="section-desc">
+              Something handwritten across the miles, just for your eyes.
+            </p>
+          </div>
+
+          <div class="envelope-wrapper">
+            <!-- Unopened Envelope Box -->
+            <div
+              class="envelope-box"
+              id="envelope-closed"
+              role="button"
+              tabindex="0"
+              aria-label="Open birthday letter"
+            >
+              <div class="envelope-seal">💌</div>
+              <h3
+                class="serif-font"
+                style="
+                  font-size: 1.35rem;
+                  color: var(--deep-burgundy);
+                  margin-bottom: 0.5rem;
+                "
+              >
+                For Anjali
+              </h3>
+              <p
+                style="
+                  color: var(--text-muted);
+                  font-size: 0.92rem;
+                  margin-bottom: 1.25rem;
+                "
+              >
+                A small handwritten note waiting for you.
+              </p>
+              <button
+                class="btn btn-primary btn-pill-sm"
+                type="button"
+                tabindex="-1"
+              >
+                Read my letter ❤️
+              </button>
+            </div>
+
+            <!-- Unfolded Letter Card -->
+            <article class="letter-paper" id="letter-card" aria-hidden="true">
+              <div class="letter-stamp">
+                <span>OCT 28</span>
+                <span>PARCEL</span>
+              </div>
+              <div class="letter-body" id="letter-content-target">
+                <!-- Preserved letter content from CONFIG.letterText -->
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+         SECTION 5: LOVE METER SIMULATION
+         ====================================================================== -->
+      <section
+        class="section-padding"
+        id="love-simulator"
+        aria-labelledby="love-simulator-heading"
+      >
+        <div class="container">
+          <div class="section-header">
+            <span class="section-eyebrow">A little experiment</span>
+            <h2 class="section-title" id="love-simulator-heading">
+              Can a little screen measure how much I love you?
+            </h2>
+            <p class="section-desc">
+              Let's ask the love simulator. Fair warning: it might run out of
+              numbers.
+            </p>
+          </div>
+
+          <div class="glass-card love-simulator-card">
+            <div class="love-meter-stage">
+              <div class="love-orb" id="love-orb" aria-hidden="true">
+                <span class="love-counter" id="love-counter">0</span>
+                <span class="love-unit">love units</span>
+              </div>
+            </div>
+
+            <div
+              class="love-progress-track"
+              id="love-progress-track"
+              role="progressbar"
+              aria-label="Love simulation progress"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+            >
+              <div class="love-progress-fill" id="love-progress-fill"></div>
+            </div>
+
+            <p class="love-simulation-status" id="love-simulation-status" role="status" aria-live="polite">
+              Ready when you are, <span class="her-name-span">Anjali</span>.
+            </p>
+
+            <button class="btn btn-primary love-simulation-button" id="btn-love-simulation" type="button">
+              <span>Run the love simulation</span>
+              <span aria-hidden="true">❤️</span>
+            </button>
+
+            <p class="love-simulation-note">
+              Just a playful little simulation — the feeling is real, the
+              numbers are not.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+         SECTION 6: 28 LITTLE THINGS THAT MAKE YOU SPECIAL
+         ====================================================================== -->
+      <section
+        class="section-padding"
+        id="compliments-section"
+        aria-labelledby="compliments-heading"
+      >
+        <div class="container">
+          <div class="section-header">
+            <span class="section-eyebrow">Gratitude</span>
+            <h2 class="section-title" id="compliments-heading">
+              28 Chhoti-Chhoti Baatein Jo Tumhe Mere Liye Itna Special Banati
+              Hain ❤️
+            </h2>
+            <p class="section-desc">
+              Tap each tile to uncover 28 little reasons why you brighten my
+              world.
+            </p>
+          </div>
+
+          <!-- Progress Tracker -->
+          <div class="progress-bar-wrap">
+            <p
+              style="
+                font-size: 0.88rem;
+                color: var(--deep-rose);
+                font-weight: 600;
+              "
+            >
+              You've found <span id="revealed-count">0</span> of
+              <span id="compliment-total">28</span>
+            </p>
+            <div
+              class="progress-track"
+              role="progressbar"
+              aria-label="Reasons revealed"
+              aria-valuemin="0"
+              aria-valuemax="28"
+              aria-valuenow="0"
+            >
+              <div class="progress-fill" id="progress-bar"></div>
+            </div>
+          </div>
+
+          <!-- 28 Compliments Grid -->
+          <div class="compliments-grid" id="compliments-container">
+            <!-- Rendered dynamically from CONFIG.compliments -->
+          </div>
+
+          <div class="bonus-message" id="bonus-unlocked-banner">
+            ✨ <strong>You found all 28!</strong> But truthfully, even
+            twenty-eight thousand tiles wouldn't be enough to list all the
+            reasons you are special. ❤️
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+         SECTION 7: DIFFERENT PLACES, ONE LITTLE STORY
+         ====================================================================== -->
+      <section
+        class="section-padding"
+        id="distance-story"
+        aria-labelledby="map-heading"
+      >
+        <div class="container">
+          <div class="section-header">
+            <span class="section-eyebrow">Connection</span>
+            <h2 class="section-title" id="map-heading">
+              A Little Note Between Two Hometowns
+            </h2>
+            <p class="section-desc">
+              Two postcards, two hometowns, and all the little things that make
+              the distance feel softer.
+            </p>
+          </div>
+
+          <div class="glass-card postcard-story">
+            <p class="postcard-intro">
+              If our hometowns could send each other a note, it might look a
+              little like this.
+            </p>
+
+            <div
+              class="postcard-pair"
+              aria-label="Postcards from our hometowns"
+            >
+              <article class="story-postcard">
+                <div class="postcard-sky" aria-hidden="true">
+                  <span class="postcard-sun"></span>
+                  <span class="postcard-hill"></span>
+                </div>
+                <span class="postcard-stamp" aria-hidden="true">♥</span>
+                <div class="postcard-copy">
+                  <p class="postcard-label">A little hello from</p>
+                  <h3 class="postcard-city" id="postcard-his-city">Champa</h3>
+                  <p class="postcard-person">
+                    <span id="postcard-his-name">Ranjan</span>'s side of the
+                    story
+                  </p>
+                </div>
+              </article>
+
+              <article class="story-postcard">
+                <div class="postcard-sky" aria-hidden="true">
+                  <span class="postcard-sun"></span>
+                  <span class="postcard-hill"></span>
+                </div>
+                <span class="postcard-stamp" aria-hidden="true">♥</span>
+                <div class="postcard-copy">
+                  <p class="postcard-label">A little hello from</p>
+                  <h3 class="postcard-city" id="postcard-her-city">Korba</h3>
+                  <p class="postcard-person">
+                    <span id="postcard-her-name">Anjali</span>'s side of the
+                    story
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <p class="postcard-connection">A note, a laugh, a little closer</p>
+
+            <p class="story-copy">
+              <span id="story-her-name">Anjali</span>'s story begins in
+              <span id="story-her-city">Korba</span>, and mine in
+              <span id="story-his-city">Champa</span>. Different hometowns, but
+              every thoughtful message, shared laugh, and little check-in brings
+              our worlds closer. Until we can share the same view, this is our
+              small reminder that distance is only one part of our story.
+            </p>
+
+            <!-- "One Day, Together" dream card -->
+            <div
+              class="future-dream-card"
+              style="
+                background: rgba(252, 236, 239, 0.45);
+                border-radius: var(--radius-md);
+                padding: 1.25rem 1.5rem;
+                margin-bottom: 1.5rem;
+                border: 1px solid var(--card-border);
+              "
+            >
+              <p
+                class="serif-font"
+                style="
+                  font-size: 1.15rem;
+                  color: var(--deep-burgundy);
+                  margin-bottom: 0.4rem;
+                "
+              >
+                One day, together
+              </p>
+              <p
+                id="future-dream-text"
+                style="
+                  color: var(--text-muted);
+                  font-size: 0.95rem;
+                  font-style: italic;
+                "
+              >
+                <!-- Loaded from CONFIG.futureDreamText -->
+              </p>
+            </div>
+
+            <button
+              class="btn btn-secondary btn-pill-sm"
+              id="btn-next-adventure"
+            >
+              <span>Our next little adventure</span>
+              <span aria-hidden="true">✨</span>
+            </button>
+
+            <div class="adventure-box" id="adventure-reveal-box">
+              <p
+                id="next-adventure-text"
+                style="color: var(--deep-burgundy); font-weight: 500"
+              >
+                <!-- Loaded from CONFIG.nextAdventureText -->
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+         SECTION 8: POLAROID GALLERY & LIGHTBOX
+         ====================================================================== -->
+      <section
+        class="section-padding"
+        id="gallery-section"
+        aria-labelledby="gallery-heading"
+      >
+        <div class="container">
+          <div class="section-header">
+            <span class="section-eyebrow">Snapshots</span>
+            <h2 class="section-title" id="gallery-heading">
+              Little Moments, Big Feelings
+            </h2>
+            <p class="section-desc">
+              Glimpses of quiet smiles and warm memories we cherish.
+            </p>
+          </div>
+
+          <div class="polaroid-grid" id="polaroids-wrap">
+            <!-- Rendered dynamically from CONFIG.photos with graceful fallback -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Accessible Lightbox Modal -->
+      <div
+        class="lightbox-backdrop"
+        id="gallery-lightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Photo Lightbox"
+      >
+        <div class="lightbox-card" id="lightbox-card">
+          <button
+            class="lightbox-close"
+            id="lightbox-close-btn"
+            aria-label="Close photo preview"
+          >
+            &times;
+          </button>
+          <button
+            class="lightbox-nav lightbox-prev"
+            id="lightbox-prev-btn"
+            aria-label="Previous photo"
+          >
+            ‹
+          </button>
+          <button
+            class="lightbox-nav lightbox-next"
+            id="lightbox-next-btn"
+            aria-label="Next photo"
+          >
+            ›
+          </button>
+          <div class="lightbox-img-wrap" id="lightbox-img-container">
+            <!-- Dynamic Lightbox Content -->
+          </div>
+          <p class="lightbox-caption" id="lightbox-caption-text"></p>
+        </div>
+      </div>
+
+      <!-- ======================================================================
+         SECTION 9: ONE LITTLE SURPRISE FOR YOU (GIFT BOX)
+         ====================================================================== -->
+      <section
+        class="section-padding"
+        id="surprise-box-section"
+        aria-labelledby="surprise-heading"
+      >
+        <div class="container">
+          <div class="section-header">
+            <span class="section-eyebrow">Gift</span>
+            <h2 class="section-title" id="surprise-heading">
+              One Little Surprise for You
+            </h2>
+            <p class="section-desc">
+              Tap the gift box to unlock what's tucked away inside.
+            </p>
+          </div>
+
+          <div class="glass-card gift-stage">
+            <div
+              class="gift-box-interactive"
+              id="gift-box-element"
+              role="button"
+              tabindex="0"
+              aria-label="Tap to open the birthday gift box"
+            >
+              <div class="gift-lid"></div>
+              <div class="gift-body">
+                <div class="gift-ribbon-vertical"></div>
+              </div>
+            </div>
+
+            <div class="gift-revealed-content" id="gift-message-box">
+              <div class="hug-card">
+                <p style="margin-bottom: 1rem">
+                  If I could send you one thing through this screen, it would be
+                  a big hug.
+                </p>
+                <p style="margin-bottom: 1rem">
+                  Until I can give you one in person, here's a little reminder
+                  that you are loved, appreciated, and celebrated.
+                </p>
+                <p
+                  class="serif-font"
+                  style="
+                    font-size: 1.3rem;
+                    color: var(--deep-rose);
+                    font-weight: 600;
+                  "
+                >
+                  Happy Birthday, <span class="her-name-span">Anjali</span>. ❤️
+                </p>
+              </div>
+
+              <!-- Optional external gift link (hidden if CONFIG.giftLink is empty) -->
+              <div
+                id="external-gift-wrap"
+                style="margin-top: 1.5rem; display: none"
+              >
+                <a
+                  href="#"
+                  id="external-gift-link"
+                  class="btn btn-primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>View your surprise gift</span>
+                  <span aria-hidden="true">🎁</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+         SECTION 10: FINAL SCREEN & WHATSAPP
+         ====================================================================== -->
+      <footer class="final-screen" id="final-screen">
+        <div class="final-heart-icon" aria-hidden="true">❤️</div>
+        <h2 class="final-quote">
+          Happy Birthday, <span class="her-name-span">Anjali</span>
+        </h2>
+        <p class="final-sub">
+          Thank you for being part of my story.<br />
+          Here's to another year of your dreams, smiles, little adventures, and
+          beautiful memories.
+        </p>
+
+        <p
+          class="serif-font"
+          style="
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--deep-rose);
+            margin-bottom: 2rem;
+          "
+        >
+          With love, <span id="final-hisname">Ranjan</span> ❤️
+        </p>
+
+        <div class="action-group">
+          <button class="btn btn-primary" id="btn-whatsapp-hug">
+            <span>Send Ranjan a birthday hug</span>
+            <span aria-hidden="true">💌</span>
+          </button>
+
+          <button class="btn btn-secondary" id="btn-replay-all">
+            <span>Replay your surprise</span>
+            <span aria-hidden="true">↺</span>
+          </button>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Toast Notification Message Box (no alerts) -->
+    <div
+      class="toast-notice"
+      id="toast-message"
+      role="alert"
+      aria-live="assertive"
+    ></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/odometer.min.js"></script>
+    <script src="script.js"></script>
+    <!-- ==========================================================================
+       VANILLA JAVASCRIPT LOGIC
+       ========================================================================== -->
+  </body>
+</html>
