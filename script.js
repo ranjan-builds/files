@@ -78,10 +78,10 @@ Ranjan ❤️`,
 
       // EDIT ME: Photo moments with relative paths (GitHub Pages project safe)
       photos: [
-        { src: "images/memory-1.jpg", caption: "The quiet moments where simple conversations felt like everything." },
-        { src: "images/memory-2.jpg", caption: "Every smile of yours that made the distance disappear." },
-        { src: "images/memory-3.jpg", caption: "Counting days until we share sunsets without screens between us." },
-        { src: "images/memory-4.jpg", caption: "Here's to all our favorite laughs, late-night talks, and dreams." }
+        { src: "images/quite.png", caption: "The quiet moments where simple conversations felt like everything." },
+        { src: "images/smile.png", caption: "Every smile of yours that made the distance disappear." },
+        { src: "images/sunset.png", caption: "Counting days until we share sunsets without screens between us." },
+        { src: "images/laught.png", caption: "Here's to all our favorite laughs, late-night talks, and dreams." }
       ],
 
       // EDIT ME: Optional gift link (e.g. digital card, playlist, voucher). Leave empty "" if none.
