@@ -582,7 +582,7 @@ Ranjan ❤️`,
         item.innerHTML = `
           <div class="polaroid-pin" aria-hidden="true"></div>
           <div class="polaroid-img-wrapper" id="img-wrap-${idx}">
-            <img src="${photo.src}" alt="${escapeHTML(photo.caption)}" class="polaroid-img" loading="lazy">
+            <img src="${photo.src}" alt="${escapeHTML(photo.caption)}" class="polaroid-img" loading="${idx === 0 ? 'eager' : 'lazy'}" fetchpriority="${idx === 0 ? 'high' : 'auto'}" decoding="async">
           </div>
           <p class="polaroid-caption">${escapeHTML(photo.caption)}</p>
         `;
